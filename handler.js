@@ -12,10 +12,16 @@
  * @returns {Promise<APIGatewayProxyResult>}
  */
 const handler = async (event) => {
+  let name = "World";
+
+  if (event.queryStringParameters.name) {
+    name = event.queryStringParameters.name;
+  }
+
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "Hello World"
+      message: `Hello ${name}`,
     }),
   };
 };
